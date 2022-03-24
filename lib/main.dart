@@ -41,8 +41,8 @@ class MapSampleState extends State<MapSample> {
       zoom: 19.151926040649414);
 
   static final Marker _kLexMarker = Marker(
-      markerId: MarkerId('_kGooglePlex'),
-      infoWindow: InfoWindow(title: "Google Plex"),
+      markerId: MarkerId('_kPlex'),
+      infoWindow: InfoWindow(title: "Lake"),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
       position: LatLng(37.43296265331129, -122.08832357078792));
 
@@ -54,6 +54,17 @@ class MapSampleState extends State<MapSample> {
     ],
     width: 5,
   );
+  static final Polygon _kPolygon = Polygon(
+    polygonId: PolygonId('kPolygon'),
+    points: [
+      LatLng(37.43296265331129, -122.08832357078792),
+      LatLng(37.42796133580664, -122.085749655962),
+      LatLng(37.418, -122.092),
+      LatLng(37.435, -122.092),
+    ],
+    strokeWidth: 5,
+    fillColor: Colors.transparent,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +73,7 @@ class MapSampleState extends State<MapSample> {
         mapType: MapType.normal,
         markers: {_kGooglePlexMarker, _kLexMarker},
         polylines: {_kPolyline},
+        polygons: {_kPolygon},
         initialCameraPosition: _kGooglePlex,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
